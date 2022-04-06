@@ -24,5 +24,6 @@ namespace prjYiFaShop.Models
         public int fPrice { get; set; }
         [DisplayName("圖示")]
         public string fImg { get; set; }
+        
     }
 }

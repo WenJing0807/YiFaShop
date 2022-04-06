@@ -1,0 +1,67 @@
+﻿@model IEnumerable<prjYiFaShop.Models.tOrderDetail>
+
+@{
+    ViewBag.Title = "OrderDetail";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>訂單明細</h2>
+
+<p>
+    @Html.ActionLink("回到訂單管理", "AOrderList")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fUserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fPId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fQty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fIsApproved)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fUserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fPId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fQty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fIsApproved)
+        </td>
+        
+        <td>
+            @*<a href="@Url.Action("AFinshOrder")?fOrderGuid=@item.fOrderGuid&fPid=@item.fPId" class="btn btn-success">完成訂單</a>*@
+            <a href="@Url.Action("EditOrderDetail")?fOrderGuid=@item.fOrderGuid&fPid=@item.fPId" class="btn btn-info">編輯</a>
+            <a href="@Url.Action("DeleteOrderDetail")?fId=@item.fId" class="btn btn-danger" onclick="return confirm('確定移除 @item.fName 嗎?')">刪除</a>
+        </td>
+    </tr>
+    
+}
+
+</table>
+

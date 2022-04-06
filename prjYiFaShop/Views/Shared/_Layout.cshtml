@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - 義發蛋行</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        
+        *,*::after,*::before{
+            margin:0;
+            padding:0;
+            box-sizing:border-box
+        }
+        a {
+            text-decoration: none; /*消除a連結底線*/
+            padding:10px;
+        }
+        ul{
+            list-style:none; /*消除li點點*/
+        }
+        .container {
+           /* display: flex;
+            flex-direction: row;
+            flex-wrap:wrap;*/
+            
+        }
+        .navbar-header{
+            display:flex;
+            flex-direction:row;
+        }
+        .nav-item {
+            display: flex;
+            flex-direction: row;
+            
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-light "style="background-color:burlywood">
+        <div class="container" >
+            <div class="navbar-header">
+                
+                @Html.ActionLink("義發線上商城", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+           
+                <ul class="nav-item mb-0">
+                    <li>@Html.ActionLink("產品列表", "Index", "Home")</li>
+                    <li>@Html.ActionLink("註冊", "Register", "Home")</li>
+                    <li>@Html.ActionLink("登入", "Login", "Home")</li>
+                </ul>
+            
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - 義發蛋行</p>
+            @Html.ActionLink("進入後台", "ALogin", "Home", new { area = "" })
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/bootstrap")*@
+    
+    @*<script src="~/Scripts/bootstrap.min.js"></script>*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>

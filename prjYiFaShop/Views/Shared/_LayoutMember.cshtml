@@ -1,0 +1,77 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - 義發蛋行</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        *, *::after, *::before {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        a {
+            text-decoration: none; /*消除a連結底線*/
+            padding: 10px;
+        }
+
+        ul {
+            list-style: none; /*消除li點點*/
+        }
+
+        .container {
+            /* display: flex;
+            flex-direction: row;
+            flex-wrap:wrap;*/
+        }
+
+        .navbar-header {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-light " style="background-color:burlywood">
+        <div class="container">
+            <div class="navbar-header">
+                @Html.ActionLink("線上購物商城-會員專區", "Index", "Member", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+                <ul class="nav-item mb-0">
+                    <li>@Html.ActionLink("產品列表", "Index", "Member")</li>
+                    <li>@Html.ActionLink("購物車", "ShoppingCar", "Member")</li>
+                    <li>@Html.ActionLink("訂單", "OrderList", "Member")</li>
+                    <li>@Html.ActionLink("登出", "Logout", "Member")</li>
+                    <li><a href="#">@Session["WelCome"]</a></li>
+                </ul>
+        </div>
+    </nav>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - 義發蛋行</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @*@Scripts.Render("~/bundles/bootstrap")*@
+        @*<script src="~/Scripts/bootstrap.min.js"></script>*@
+        @RenderSection("scripts", required: false)
+</body>
+</html>
+
